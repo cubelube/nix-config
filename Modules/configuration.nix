@@ -133,7 +133,13 @@ in {
      hyfetch
      unzip
      (unstable.discord.override { withVencord = true; })
+     git
+     gcc
      #  wget
+  ];
+
+  fonts.packages = with pkgs; [
+  	nerdfonts
   ];
 
   # Enable steam
