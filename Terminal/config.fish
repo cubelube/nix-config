@@ -1,5 +1,5 @@
 function fish_greeting
-	fortune | cowsay | lolcat
+	fortune | cowsay -f tux | lolcat
 end
 
 alias neofetch="hyfetch"
