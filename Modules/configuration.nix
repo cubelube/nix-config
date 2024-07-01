@@ -62,7 +62,7 @@ in {
   services.xserver.enable = true;
 
   # Enable the KDE Plasma Desktop Environment.
-  services.xserver.displayManager.sddm.enable = true;
+  services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.plasma5.enable = true;
 
   # Configure keymap in X11
@@ -110,13 +110,13 @@ in {
     shell = pkgs.fish;
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
-      kate
-    #  thunderbird
+      spotify
+      lunar-client
+      steam
+      hyfetch
+      (unstable.discord.override { withVencord = false; })
     ];
   };
-
-  # Install firefox.
-  programs.firefox.enable = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -124,7 +124,7 @@ in {
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-     neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+     neovim
      kitty
      fish
      floorp
@@ -132,16 +132,9 @@ in {
      lolcat
      fortune
      xfce.thunar
-     spotify
-     lunar-client
-     steam
-     vesktop
-     hyfetch
      unzip
-     (unstable.discord.override { withVencord = true; })
      git
      gcc
-     #  wget
   ];
 
   fonts.packages = with pkgs; [
@@ -149,12 +142,11 @@ in {
   ];
 
   # Enable steam
-
   programs.steam = {
   	enable = true;
-	remotePlay.openFirewall = true;
-	dedicatedServer.openFirewall = true;
-	localNetworkGameTransfers.openFirewall = true;
+	 remotePlay.openFirewall = true;
+	 dedicatedServer.openFirewall = true;
+	 localNetworkGameTransfers.openFirewall = true;
   };
 
   # Some programs need SUID wrappers, can be configured further or are
